@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled';
 //https://commons.wikimedia.org/wiki/File:HelloWorld.svg
-import { ReactComponent as HelloLogoIcon } from '../../assets/logo.svg';
-import { ReactComponent as DocsIcon } from 'gatsby-theme-apollo-docs/src/assets/docs.svg';
+import logo from '../../assets/logo.svg';
+import {ReactComponent as DocsIcon} from 'gatsby-theme-apollo-docs/src/assets/docs.svg';
 
 const Wrapper = styled.div({
     display: 'flex',
     fontSize: 24,
 });
 
-const StyledHelloLogoIcon = styled(HelloLogoIcon)({
-    height: '3em',
+const StyledHelloLogoIcon = styled.img({
     position: 'relative',
-    top: '6px',
-    width:'3em',
+    width: 'auto',
+    height: '1em',
     marginRight: '0.2857142857em',
+
 });
 
 const StyledDocsIcon = styled(DocsIcon)({
@@ -25,7 +25,7 @@ const StyledDocsIcon = styled(DocsIcon)({
 export default function Logo() {
     return (
         <Wrapper>
-            <StyledHelloLogoIcon viewBox="0 0 100 100"  preserveAspectRatio='slice'/>
+            <StyledHelloLogoIcon src={logo}/>
             <StyledDocsIcon/>
         </Wrapper>
     );

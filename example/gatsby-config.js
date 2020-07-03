@@ -10,11 +10,13 @@ module.exports = {
                 root,
                 siteName: 'Hello world',
                 description: "An example of how to set up Apollo's documentation theme",
+                favicon:'/favicon.ico',
                 sidebarCategories: {
                     //Null is an alias for index page.
                     null: ['index'],
                     More: ['other']
-                }
+                },
+
             }
         }
     ]
