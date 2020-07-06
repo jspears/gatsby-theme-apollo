@@ -5,13 +5,13 @@ import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import PageContent from './page-content';
 import PageHeader from './page-header';
 import PropTypes from 'prop-types';
-import React, {Fragment, createContext, useContext} from 'react';
+import React, { createContext, useContext} from 'react';
 import rehypeReact from 'rehype-react';
 import styled from '@emotion/styled';
 import {ContentWrapper, colors, smallCaps} from 'gatsby-theme-apollo-core';
 import {MDXProvider} from '@mdx-js/react';
 import {graphql, navigate} from 'gatsby';
-
+import {PageContextProvider} from './page-context';
 const StyledContentWrapper = styled(ContentWrapper)({
   paddingBottom: 0
 });
@@ -133,7 +133,8 @@ export default function Template(props) {
     githubHost,
     spectrumUrl,
     twitterHandle,
-    baseUrl
+    baseUrl,
+    favicon,
   } = props.pageContext;
 
   const pages = sidebarContents
@@ -141,10 +142,11 @@ export default function Template(props) {
     .filter(page => !page.anchor);
 
   return (
-    <Fragment>
+    <PageContextProvider value={props.pageContext}>
       <CustomSEO
         title={frontmatter.title}
         description={frontmatter.description || description}
+        favicon={favicon}
         siteName={title}
         baseUrl={baseUrl}
         image={fields.image}
@@ -181,7 +183,7 @@ export default function Template(props) {
         </PageContent>
         <Footer />
       </StyledContentWrapper>
-    </Fragment>
+    </PageContextProvider>
   );
 }
 

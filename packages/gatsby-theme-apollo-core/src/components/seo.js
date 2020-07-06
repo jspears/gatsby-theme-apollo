@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import {withPrefix} from 'gatsby';
 
 export default function SEO(props) {
   const {title, description, siteName, twitterCard, children, favicon} = props;
@@ -13,7 +14,7 @@ export default function SEO(props) {
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <link rel="icon" href={favicon} />
+      <link rel="icon" href={favicon.startsWith('/') ? withPrefix(favicon) : favicon} />
       {children}
     </Helmet>
   );

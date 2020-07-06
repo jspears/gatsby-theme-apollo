@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, useContext} from 'react';
+import {PageContextConsumer} from "./page-context";
 import docs from '../docs.json';
 import extend from 'lodash/extend';
 import partition from 'lodash/partition';
@@ -177,6 +178,7 @@ export class TypescriptApiBox extends Component {
     return {
       id: _typeId(rawData),
       name: rawData.name,
+      host:'github.com',
       type,
       signature: this._signature(rawData, parameters),
       summary: _summary(rawData),
@@ -399,17 +401,20 @@ export class TypescriptApiBox extends Component {
               <a href={`#${args.id}`}>{args.signature}</a>
             </StyledCode>
           </MainHeading>
-          {args.filepath && (
-            <Subheading>
-              <a
-                href={`https://github.com/${args.repo}/blob/master/${args.filepath}#L${args.lineno}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ({args.filepath}, line {args.lineno})
-              </a>
-            </Subheading>
-          )}
+          {args.filepath && (<PageContextConsumer>{({
+              githubHost = 'github.com',
+              githubUrl,
+              githubBranch = 'master'
+                                                    })=>(
+                <Subheading>
+                  <a
+                      href={`https://${githubHost}/${githubUrl}/blob/${githubBranch}/${args.filepath}#L${args.lineno}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                  >
+                    ({args.filepath}, line {args.lineno})
+                  </a>
+                </Subheading>)}</PageContextConsumer>)}
         </Header>
         <Body>
           {args.summary && mdToReact(args.summary)}

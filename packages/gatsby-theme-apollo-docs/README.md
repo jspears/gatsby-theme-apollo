@@ -80,6 +80,8 @@ module.exports = {
 | contentDir        | string | No       | The directory where docs content exists (`content` by default)                                                                          |
 | githubHost        | string | No       | The hostname of github server (`github.com` by default)                                                                                  |
 | githubRepo        | string | No       | The owner and name of the content repository on GitHub                                                                                  |
+| githubBranch      | string | No       | The branch for the source defaults to `master`.                                                                                         |
+| favicon           | string | No       | Path to favicon to use.                                                                                                                 |
 | spectrumPath      | string | No       | The path to be appended to Spectrum links                                                                                               |
 | gaTrackingId      | string | No       | Your site's Google Analytics tracking ID                                                                                                |
 | algoliaApiKey     | string | No       | Your [Algolia DocSearch](https://community.algolia.com/docsearch/) API key                                                              |
@@ -150,7 +152,7 @@ Page URLs will be derived from the file paths of your Markdown. You can nest Mar
 
 You can customize a website using this theme further by taking advantage of [component shadowing](../gatsby-theme-apollo-core#customizing-the-logo).
 
-By default, this theme sets the website favicon to [the one from Apollo's website](https://www.apollographql.com/favicon.ico) within its [internal `SEO` component](../gatsby-theme-apollo-core/src/components/seo.js). If you wanted to use your own favicon, you could shadow the `SEO` component within your site and add your custom SEO/favicon implementation.
+By default, this theme sets the website Favicon to [the one from Apollo's website](https://www.apollographql.com/favicon.ico) within its [internal `SEO` component](../gatsby-theme-apollo-core/src/components/seo.js). If you wanted to use your own Favicon, you could shadow the `SEO` component within your site and add your custom SEO/Favicon implementation.
 
 ```js
 // src/gatsby-theme-apollo-docs/components/seo.js
@@ -160,7 +162,7 @@ import {Helmet} from 'react-helmet';
 export default function SEO({title, description, siteName}) {
   return (
     <Helmet>
-      <link rel="icon" href="/path/to/custom-favicon.ico" />
+      <link rel="icon" href="/path/to/custom-Favicon.ico" />
       {/* other SEO tags (OpenGraph, Twitter, etc.) */}
     </Helmet>
   );

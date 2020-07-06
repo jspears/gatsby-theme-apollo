@@ -61,6 +61,7 @@ module.exports = {
   spectrumHandle: 'apollo',
   youtubeUrl: 'https://www.youtube.com/channel/UC0pEW_GOrMJ23l8QcrGdKSw',
   logoLink: 'https://www.apollographql.com/docs/',
+  favicon:'https://apollographql.com/favicon.ico',
   baseDir: 'docs',
   contentDir: 'source',
   navConfig,
