@@ -14,6 +14,7 @@ module.exports = ({
   contentDir = 'content',
   versions = {},
   gaTrackingId,
+  ignore,
   checkLinksOptions
 }) => {
   const gatsbyRemarkPlugins = [
@@ -110,7 +111,8 @@ module.exports = ({
       resolve: 'gatsby-source-filesystem',
       options: {
         path: path.join(root, contentDir),
-        name: 'docs'
+        name: 'docs',
+        ignore,
       }
     },
     {
