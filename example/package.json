@@ -10,10 +10,11 @@
     "types": "typedoc --json ./src/gatsby-theme-apollo-docs/docs.json --ignoreCompilerErrors ./src/index.ts"
   },
   "dependencies": {
-    "typedoc": "^0.17.8",
     "gatsby": "^2.23.18",
+    "gatsby-source-typedoc": "^1.2.2",
     "gatsby-theme-apollo-docs": "^4.3.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "typedoc": "^0.17.8"
   }
 }
