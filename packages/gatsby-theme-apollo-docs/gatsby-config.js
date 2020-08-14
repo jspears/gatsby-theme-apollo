@@ -106,7 +106,7 @@ module.exports = ({
   ];
 
   const plugins = [
-    'gatsby-theme-apollo-core',
+    '@paypalcorp/gatsby-theme-apollo-core',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

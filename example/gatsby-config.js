@@ -3,7 +3,7 @@ const root = __dirname;
 module.exports = {
     plugins: [
         {
-            resolve: "gatsby-source-typedoc",
+            resolve: "@paypalcorp/gatsby-source-typedoc",
             options: {
                 src: ['./src/index.ts'],
                 typedoc: {
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
             //use the gatsby apollo theme
-            resolve: 'gatsby-theme-apollo-docs',
+            resolve: '@paypalcorp/gatsby-theme-apollo-docs',
             options: {
                 //root is mandatory.
                 root,
