@@ -1,6 +1,6 @@
 {
   "name": "@paypalcorp/gatsby-theme-apollo-docs",
-  "version": "4.3.2",
+  "version": "4.3.8",
   "main": "index.js",
   "description": "A Gatsby theme for building documentation websites",
   "author": "Trevor Blades <blades@apollographql.com>",
@@ -22,7 +22,7 @@
     "gatsby-plugin-google-analytics": "^2.2.5",
     "gatsby-plugin-mdx": "^1.0.23",
     "gatsby-plugin-printer": "1.0.x",
-    "gatsby-remark-autolink-headers": "^2.0.16",
+    "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-remark-check-links": "^2.1.0",
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.0.12",
@@ -46,7 +46,7 @@
     "striptags": "^3.1.1"
   },
   "devDependencies": {
-    "gatsby": "^2.19.49",
+    "gatsby": "^2.24.23",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

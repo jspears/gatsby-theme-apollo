@@ -8,6 +8,7 @@ This is an entirely configuration-based Gatsby theme that generates a documentat
   - [`versions`](#versions)
   - [`sidebarCategories`](#sidebarcategories)
   - [`navConfig`](#navconfig)
+  - [Algolia configuration](#algolia-configuration)
 - [Creating pages](#creating-pages)
 - [Component shadowing](#component-shadowing)
 - [Components](#components)
@@ -68,34 +69,37 @@ module.exports = {
 
 ## Options
 
-| Option name       | Type   | Required | Description                                                                                                                             |
-| ----------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| root              | string | Yes      | Must be `__dirname`                                                                                                                     |
-| siteName          | string | Yes      | The main title for the website, used in the `<title>` element and top left corner of the site                                           |
-| description       | string | Yes      | The site description for SEO and social (FB, Twitter) tags                                                                              |
-| sidebarCategories | object | Yes      | An object mapping categories to page paths (see [`sidebarCategories` reference](#sidebarcategories))                                    |
-| subtitle          | string | No       | The page title that gets rendered above the sidebar navigation                                                                          |
-| pageTitle         | string | No       | The string to be rendered in the page's `<title>` tag. If omitted, `siteName` will be used.                                             |
-| baseDir           | string | No       | If your Gatsby site does not live in the root of your project directory/git repo, pass the subdirectory name here (`docs`, for example) |
-| contentDir        | string | No       | The directory where docs content exists (`content` by default)                                                                          |
-| githubHost        | string | No       | The hostname of github server (`github.com` by default)                                                                                  |
-| githubRepo        | string | No       | The owner and name of the content repository on GitHub                                                                                  |
-| githubBranch      | string | No       | The branch for the source defaults to `master`.                                                                                         |
-| favicon           | string | No       | Path to favicon to use.                                                                                                                 |
-| spectrumPath      | string | No       | The path to be appended to Spectrum links                                                                                               |
-| gaTrackingId      | string | No       | Your site's Google Analytics tracking ID                                                                                                |
-| algoliaApiKey     | string | No       | Your [Algolia DocSearch](https://community.algolia.com/docsearch/) API key                                                              |
-| algoliaIndexName  | string | No       | The name of your DocSearch index                                                                                                        |
-| baseUrl           | string | No       | The origin where your website will be hosted (e.g. `https://www.apollographql.com`)                                                     |
-| spectrumHandle    | string | No       | Your Spectrum community's handle/slug                                                                                                   |
-| twitterHandle     | string | No       | Your Twitter handle, without the "@"                                                                                                    |
-| youtubeUrl        | string | No       | The URL of your YouTube channel                                                                                                         |
-| defaultVersion    | string | No       | An identifier for the default selected version, served at the root of the docset (/)                                                    |
-| localVersion      | string | No       | If the local files represent a version different from the `defaultVersion`, specify an identifier for the local version here            |
-| versions          | array  | No       | An array of objects representing the versions that the website should generate                                                          |
-| navConfig         | object | No       | An object defining the top-left navigation links (see [`navConfig` reference](#navconfig))                                              |
-| checkLinksOptions | object | No       | Options accepted by [`gastby-remark-check-links`](https://github.com/trevorblades/gatsby-remark-check-links#options)                    |
-| ignore            | array  | No       | Files to ignore using [anymatch](https://github.com/es128/anymatch)-compatible definition) pattern.
+| Option name         | Type   | Required | Description                                                                                                                             |
+| ------------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| root                | string | Yes      | Must be `__dirname`                                                                                                                     |
+| siteName            | string | Yes      | The main title for the website, used in the `<title>` element and top left corner of the site                                           |
+| description         | string | Yes      | The site description for SEO and social (FB, Twitter) tags                                                                              |
+| sidebarCategories   | object | Yes      | An object mapping categories to page paths (see [`sidebarCategories` reference](#sidebarcategories))                                    |
+| subtitle            | string | No       | The page title that gets rendered above the sidebar navigation                                                                          |
+| pageTitle           | string | No       | The string to be rendered in the page's `<title>` tag. If omitted, `siteName` will be used.                                             |
+| baseDir             | string | No       | If your Gatsby site does not live in the root of your project directory/git repo, pass the subdirectory name here (`docs`, for example) |
+| contentDir          | string | No       | The directory where docs content exists (`content` by default)                                                                          |
+| githubHost          | string | No       | The hostname of the GitHub server (`github.com` by default)                                                                             |
+| githubRepo          | string | No       | The owner and name of the content repository on GitHub                                                                                  |
+| githubBranch        | string | No       | The branch for the source defaults to `master`.                                                                                         |
+| favicon             | string | No       | Path to favicon to use.                                                                                                                 |
+| spectrumPath        | string | No       | The path to be appended to Spectrum links                                                                                               |
+| gaTrackingId        | string | No       | Your site's Google Analytics tracking ID                                                                                                |
+| algoliaApiKey       | string | No       | Your [Algolia DocSearch](https://community.algolia.com/docsearch/) API key                                                              |
+| algoliaIndexName    | string | No       | The name of your DocSearch index                                                                                                        |
+| baseUrl             | string | No       | The origin where your website will be hosted (e.g. `https://www.apollographql.com`)                                                     |
+| spectrumHandle      | string | No       | Your Spectrum community's handle/slug                                                                                                   |
+| twitterHandle       | string | No       | Your Twitter handle, without the "@"                                                                                                    |
+| youtubeUrl          | string | No       | The URL of your YouTube channel                                                                                                         |
+| defaultVersion      | string | No       | An identifier for the default selected version, served at the root of the docset (/)                                                    |
+| localVersion        | string | No       | If the local files represent a version different from the `defaultVersion`, specify an identifier for the local version here            |
+| versions            | array  | No       | An array of objects representing the versions that the website should generate                                                          |
+| navConfig           | object | No       | An object defining the top-left navigation links (see [`navConfig` reference](#navconfig))                                              |
+| checkLinksOptions   | object | No       | Options accepted by [`gastby-remark-check-links`](https://github.com/trevorblades/gatsby-remark-check-links#options)                    |
+| ignore              | array  | No       | Files to ignore using [anymatch](https://github.com/es128/anymatch)-compatible definition pattern                                       |
+| gatsbyRemarkPlugins | array  | No       | Additional Gatsby Remark plugins to pass to `gatsby-transformer-remark` and `gatsby-plugin-mdx`                                         |
+| remarkPlugins       | array  | No       | Additional [Remark plugins](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/#remark-plugins) to pass to `gatsby-plugin-mdx`         |
+
 ### `versions`
 
 If omitted, only one version of docs will be built, based on the files in the theme consumer repository. If provided, the `versions` option expects an object mapping older versions' labels to their respective git branch. The current filesystem will still determine the "default" version. The default label for this version is "Latest", but is configurable by the `defaultVersion` option.
@@ -133,6 +137,12 @@ The `sidebarCategories` option is an object keyed by category titles. Each entry
 
 The `navConfig` option should be an object keyed by link titles. The values should be objects with `description`, and `url` properties. Check out the [default theme options](./theme-options.js) for an example of the expected shape of this data.
 
+### Algolia configuration
+
+This theme allows you to use Algolia DocSearch to power a search bar in the site. You'll need to provide your API key and index name to the theme in the form of `algoliaApiKey` and `algoliaIndexName` options.
+
+To get these, [sign up with DocSearch](https://docsearch.algolia.com/apply/) for an open source repo. You'll be able to configure your indexing strategy by submitting a PR to edit your config file in [the `docsearch-configs` repo](https://github.com/algolia/docsearch-configs).
+
 ## Creating pages
 
 This theme generates pages based on Markdown or MDX files in the [`contentDir`](#configuration) directory of a repo. Your Markdown/MDX files should contain some frontmatter defining their titles and descriptions.
@@ -152,7 +162,7 @@ Page URLs will be derived from the file paths of your Markdown. You can nest Mar
 
 You can customize a website using this theme further by taking advantage of [component shadowing](../gatsby-theme-apollo-core#customizing-the-logo).
 
-By default, this theme sets the website Favicon to [the one from Apollo's website](https://www.apollographql.com/favicon.ico) within its [internal `SEO` component](../gatsby-theme-apollo-core/src/components/seo.js). If you wanted to use your own Favicon, you could shadow the `SEO` component within your site and add your custom SEO/Favicon implementation.
+By default, this theme sets the website favicon to [the one from Apollo's website](https://www.apollographql.com/favicon.ico) within its [internal `SEO` component](../gatsby-theme-apollo-core/src/components/seo.js). If you wanted to use your own favicon, you could shadow the `SEO` component within your site and add your custom SEO/favicon implementation.
 
 ```js
 // src/gatsby-theme-apollo-docs/components/seo.js
@@ -162,7 +172,7 @@ import {Helmet} from 'react-helmet';
 export default function SEO({title, description, siteName}) {
   return (
     <Helmet>
-      <link rel="icon" href="/path/to/custom-Favicon.ico" />
+      <link rel="icon" href="/path/to/custom-favicon.ico" />
       {/* other SEO tags (OpenGraph, Twitter, etc.) */}
     </Helmet>
   );
